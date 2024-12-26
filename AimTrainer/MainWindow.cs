@@ -14,12 +14,10 @@ namespace AimTrainer
         [UI] private Box _startBox = null;
 
         [UI] private Fixed _mainBox = null;
-        
-        private Button _aimButton = null;
 
         private int _clickedCounter = 0;
 
-        private readonly Timer _roundTimer = new Timer(60_000);
+        private readonly Timer _roundTimer = new Timer(20_000);
 
         public MainWindow() : this(new Builder("MainWindow.glade"))
         {
@@ -52,7 +50,10 @@ namespace AimTrainer
             Remove(_startBox);
             Add(_mainBox);
 
-            CreateNewAimBox();
+            for (int i = 0; i < 3; i++)
+            {
+                CreateNewAimBox();
+            }
 
             _roundTimer.Start();
         }
@@ -60,7 +61,7 @@ namespace AimTrainer
         private void AimButton_Clicked(object sender, EventArgs a)
         {
             _clickedCounter++;
-            ClearCurrentAimBox();
+            ClearCurrentAimBox((Button)sender);
             CreateNewAimBox();
         }
         
@@ -68,8 +69,15 @@ namespace AimTrainer
         {
             _roundTimer.Stop();
             this.Remove(_mainBox);
-            
-            ClearCurrentAimBox();
+
+            foreach (var child in _mainBox.Children)
+            {
+                if (child is Button childButton)
+                {
+                    childButton.Clicked -= AimButton_Clicked;
+                    _mainBox.Remove(childButton);
+                }
+            }
             
             var score = _clickedCounter;
             _label1.Text = $"You scored {score}!";
@@ -86,27 +94,27 @@ namespace AimTrainer
         {
             var randomSize = Random.Shared.Next(16, 77);
 
-            _aimButton = new Button();
-            _aimButton.Visible = true;
-            _aimButton.SetSizeRequest(randomSize, randomSize);
+            var aimButton = new Button();
+            aimButton.Visible = true;
+            aimButton.SetSizeRequest(randomSize, randomSize);
             
-            _aimButton.Clicked += AimButton_Clicked;
+            aimButton.Clicked += AimButton_Clicked;
 
             var colour = GenerateRandomColor();
-            SetButtonBackgroundColor(_aimButton, colour);
+            SetButtonBackgroundColor(aimButton, colour);
 
             var maxSize = this.Allocation.Size;
 
             var x = Random.Shared.Next(0, maxSize.Width - randomSize);
             var y = Random.Shared.Next(0, maxSize.Height - randomSize);
 
-            _mainBox.Put(_aimButton, x, y);
+            _mainBox.Put(aimButton, x, y);
         }
         
-        private void ClearCurrentAimBox()
+        private void ClearCurrentAimBox(Button button)
         {
-            _aimButton.Clicked -= AimButton_Clicked;
-            _mainBox.Remove(_aimButton);
+            button.Clicked -= AimButton_Clicked;
+            _mainBox.Remove(button);
         }
 
         // Generate a random color in hex format
