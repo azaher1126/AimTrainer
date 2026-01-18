@@ -6,6 +6,9 @@
         <PublishReadyToRun>false</PublishReadyToRun>
         <TieredCompilation>false</TieredCompilation>
         <Nullable>disable</Nullable>
+        <Company>Ayman Zaher</Company>
+        <Product>AimTrainer</Product>
+        <AssemblyTitle>AimTrainer</AssemblyTitle>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -22,6 +25,12 @@
         <EmbeddedResource Include="Icon.bmp">
             <LogicalName>Icon.bmp</LogicalName>
         </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup Condition="'$(RuntimeIdentifier)' == 'osx-x64'
+                    Or '$(RuntimeIdentifier)' == 'osx-arm64'">
+        <None Include="Info.plist">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Gum.MonoGame" Version="2026.1.12.1" />
