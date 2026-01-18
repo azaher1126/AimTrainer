@@ -62,7 +62,7 @@ public class TitleScene : Scene
         // If the user presses enter, switch to the game scene.
         if (GameCore.Input.Keyboard.WasKeyJustPressed(Keys.Enter))
         {
-            // Nothing right now...
+            GameCore.ChangeScene(new GameScene());
         }
     }
     
