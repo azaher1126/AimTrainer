@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using AimTrainer.Desktop.Core;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace AimTrainer.Desktop.Scenes;
 
@@ -54,6 +55,15 @@ public class TitleScene : Scene
 
         // Load the font for the title text.
         _font5x = Content.Load<SpriteFont>("fonts/04B_30_5x");
+    }
+    
+    public override void Update(GameTime gameTime)
+    {
+        // If the user presses enter, switch to the game scene.
+        if (GameCore.Input.Keyboard.WasKeyJustPressed(Keys.Enter))
+        {
+            // Nothing right now...
+        }
     }
     
     public override void Draw(GameTime gameTime)

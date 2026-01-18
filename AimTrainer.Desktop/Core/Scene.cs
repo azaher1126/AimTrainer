@@ -68,7 +68,7 @@ public abstract class Scene: IDisposable
     
     ~Scene() => Dispose(false);
 
-    private void Dispose(bool disposing)
+    protected void Dispose(bool disposing)
     {
         if (IsDisposed)
         {
