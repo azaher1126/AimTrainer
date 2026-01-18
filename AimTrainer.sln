@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimTrainer", "AimTrainer\AimTrainer.csproj", "{4269AF3A-32CA-4A06-A73B-990DE51876CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimTrainer.Desktop", "AimTrainer.Desktop\AimTrainer.Desktop.csproj", "{88A9D4D7-0621-4C2A-9BAF-DE044A8EDF4C}"
 EndProject
 Global
@@ -10,10 +8,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4269AF3A-32CA-4A06-A73B-990DE51876CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4269AF3A-32CA-4A06-A73B-990DE51876CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4269AF3A-32CA-4A06-A73B-990DE51876CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4269AF3A-32CA-4A06-A73B-990DE51876CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88A9D4D7-0621-4C2A-9BAF-DE044A8EDF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88A9D4D7-0621-4C2A-9BAF-DE044A8EDF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88A9D4D7-0621-4C2A-9BAF-DE044A8EDF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
