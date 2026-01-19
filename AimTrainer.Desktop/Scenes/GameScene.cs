@@ -14,6 +14,8 @@ public class GameScene: Scene
 
     private List<Target> _targets;
     
+    private TimeSpan? _startTime;
+    
     private const int TARGET_COUNT = 5;
     
     public override void Initialize()
@@ -34,23 +36,28 @@ public class GameScene: Scene
     
     public override void Update(GameTime gameTime)
     {
+        if (_startTime != null && gameTime.TotalGameTime - _startTime > TimeSpan.FromSeconds(60))
+        {
+            GameCore.ChangeScene(new ScoreScene());
+        }
+        
         if (GameCore.Input.Mouse.WasButtonJustPressed(MouseButton.Left))
         {
+            _startTime ??= gameTime.TotalGameTime;
+
             for (int i = TARGET_COUNT - 1; i >= 0; i--)
             {
-                if (IsTargetClicked(_targets[i]))
-                {
-                    _targets.RemoveAt(i);
-                }
+                if (!IsTargetClicked(_targets[i])) continue;
+                _targets.RemoveAt(i);
+                break;
             }
         }
 
-        if (_targets.Count < TARGET_COUNT)
+        if (_targets.Count >= TARGET_COUNT) return;
+        
+        for (int i = _targets.Count; i < TARGET_COUNT; i++)
         {
-            for (int i = 0; i < TARGET_COUNT - _targets.Count; i++)
-            {
-                _targets.Add(CreateTarget());
-            }
+            _targets.Add(CreateTarget());
         }
     }
 
