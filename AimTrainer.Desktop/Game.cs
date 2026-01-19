@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using AimTrainer.Desktop.Core;
+﻿using AimTrainer.Desktop.Core;
 using AimTrainer.Desktop.Scenes;
+using MonoGameGum;
+using Gum.Forms;
+using Gum.Forms.Controls;
 
 namespace AimTrainer.Desktop;
 
@@ -13,15 +14,25 @@ public class Game : GameCore
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
         base.Initialize();
+        
+        InitializeGum();
         
         ChangeScene(new TitleScene());
     }
 
-    protected override void LoadContent()
+    private void InitializeGum()
     {
-        // TODO: use this.Content to load your game content here
+        GumService.Default.Initialize(this, DefaultVisualsVersion.V3);
+        
+        GumService.Default.ContentLoader!.XnaContentManager = Content;
+        
+        FrameworkElement.KeyboardsForUiControl.Add(GumService.Default.Keyboard);
+        
+        FrameworkElement.TabReverseKeyCombos.Add(
+            new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Up });
+        
+        FrameworkElement.TabKeyCombos.Add(
+            new KeyCombo() { PushedKey = Microsoft.Xna.Framework.Input.Keys.Down });
     }
 }
