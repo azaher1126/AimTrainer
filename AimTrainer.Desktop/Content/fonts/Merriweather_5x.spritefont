@@ -8,8 +8,16 @@ with.
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="Graphics:FontDescription">
 
-    <FontName>04B_30.ttf</FontName>
-    <Size>87.5</Size>
+    <!--
+    Modify this string to change the font that will be imported.
+    -->
+    <FontName>Merriweather</FontName>
+
+    <!--
+    Size is a float value, measured in points. Modify this value to change
+    the size of the font.
+    -->
+    <Size>84</Size>
 
     <!--
     Spacing is a float value, measured in pixels. Modify this value to change
@@ -27,7 +35,7 @@ with.
     Style controls the style of the font. Valid entries are "Regular", "Bold", "Italic",
     and "Bold, Italic", and are case sensitive.
     -->
-    <Style>Regular</Style>
+    <Style>Bold</Style>
 
     <!--
     If you uncomment this line, the default character will be substituted if you draw
