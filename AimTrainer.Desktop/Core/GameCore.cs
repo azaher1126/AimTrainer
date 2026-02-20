@@ -58,6 +58,8 @@ public class GameCore: Microsoft.Xna.Framework.Game
     /// </summary>
     public static AudioController Audio { get; private set; }
     
+    public static AssetManager Assets { get; private set; }
+    
     
     /// <summary>
     /// Creates a new Core instance.
@@ -120,6 +122,8 @@ public class GameCore: Microsoft.Xna.Framework.Game
         
         // Create a new audio controller.
         Audio = new AudioController();
+        
+        Assets = new AssetManager(Content);
     }
     
     protected override void UnloadContent()
