@@ -59,6 +59,21 @@ public class GameCore: Microsoft.Xna.Framework.Game
     public static AudioController Audio { get; private set; }
     
     public static AssetManager Assets { get; private set; }
+
+    /// <summary>
+    /// Gets or Sets the current display/rendering settings.
+    /// </summary>
+    public static GameSettings Settings { get; set; }
+
+    /// <summary>
+    /// Gets or Sets the current game configuration.
+    /// </summary>
+    public static GameConfig Config { get; set; }
+
+    /// <summary>
+    /// Gets or Sets the current leaderboard.
+    /// </summary>
+    public static Leaderboard Leaderboard { get; set; }
     
     
     /// <summary>
